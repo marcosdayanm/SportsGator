@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Schedules
+{% endblock %}
+
+{% block main %}
+
+
+<img src="{{ logo }}" alt="Photo" class="mid-image">
+<br>
+<h1 class="text-white">{{ name }} Schedule</h1>
+
+
+<br><br><br>
+
+<div  class="asection">
+
+    <!-- Tabla de Preseason-->
+    {% if ps_schedule|length > 0 %}
+
+    <h3 class="text-white">Preseason</h3>
+    <br>
+
+    <table class="table-grey text-white">
+
+        <thead>
+            <tr>
+                <th>WK</th>
+                <th>OPPONENT</th>
+                <th>DATE (DD/MM/YYYY)</th>
+                <th>TIME</th>
+                <th>RESULT</th>
+                <th>W-L-T</th>
+            </tr>
+        </thead>
+  
+        <tbody>
+            {% for p in ps_schedule %}
+            <tr>
+  
+              <td>{{ p['gameWeek'] }}</td>
+              <td>
+                <img src="{{ p['logoopp'] }}" alt="Photo" class="small-image">
+                <span> {{ p['opponent'] }}</span>
+              </td>
+              <td>{{ p['matchdate'] }}</td>
+              <td>{{ p['gameTime'] }}</td>
+              <td> <span class="{{ p['resultcolor'] }}">{{ p['result'] }}</span>  {{ p['marcador'] }}</td>
+              <td>{{ p['teamscore'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    {% endif %}
+
+
+    <!-- Tabla de Pending Preseason-->
+    {% if pend_ps_schedule|length > 0 %}
+
+    <h3 class="text-white">Pending Preseason Matches</h3>
+    <br>
+
+    <table class="table-grey text-white">
+
+        <thead>
+            <tr>
+                <th>WK</th>
+                <th>OPPONENT</th>
+                <th>DATE (DD/MM/YYYY)</th>
+                <th>TIME</th>
+            </tr>
+        </thead>
+  
+        <tbody>
+            {% for p in pend_ps_schedule %}
+            <tr>
+  
+              <td>{{ p['gameWeek'] }}</td>
+              <td>
+                <img src="{{ p['logoopp'] }}" alt="Photo" class="small-image">
+                <span> {{ p['opponent'] }}</span>
+              </td>
+              <td>{{ p['matchdate'] }}</td>
+              <td>{{ p['gameTime'] }}</td>
+              
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    {% endif %}
+
+
+
+    <!-- Tabla de Season-->
+    {% if schedule|length > 0 %}
+
+    <h3 class="text-white">Regular Season</h3>
+    <br>
+
+    <table class="table-grey text-white">
+
+        <thead>
+            <tr>
+                <th>WK</th>
+                <th>OPPONENT</th>
+                <th>DATE (DD/MM/YYYY)</th>
+                <th>TIME</th>
+                <th>RESULT</th>
+                <th>W-L-T</th>
+            </tr>
+        </thead>
+  
+        <tbody>
+            {% for p in schedule %}
+            <tr>
+  
+              <td>{{ p['gameWeek'] }}</td>
+              <td>
+                <img src="{{ p['logoopp'] }}" alt="Photo" class="small-image">
+                <span> {{ p['opponent'] }}</span>
+              </td>
+              <td>{{ p['matchdate'] }}</td>
+              <td>{{ p['gameTime'] }}</td>
+              <td> <span class="{{ p['resultcolor'] }}">{{ p['result'] }}</span>  {{ p['marcador'] }}</td>
+              <td>{{ p['teamscore'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    {% endif %}
+
+
+
+        <!-- Tabla de Pending Regular Season-->
+        {% if pend_schedule|length > 0 %}
+
+        <h3 class="text-white">Pending Regular Season Matches</h3>
+        <br>
+    
+        <table class="table-grey text-white">
+    
+            <thead>
+                <tr>
+                    <th>WK</th>
+                    <th>OPPONENT</th>
+                    <th>DATE (DD/MM/YYYY)</th>
+                    <th>TIME</th>
+                </tr>
+            </thead>
+      
+            <tbody>
+                {% for p in pend_schedule %}
+                <tr>
+      
+                  <td>{{ p['gameWeek'] }}</td>
+                  <td>
+                    <img src="{{ p['logoopp'] }}" alt="Photo" class="small-image">
+                    <span> {{ p['opponent'] }}</span>
+                  </td>
+                  <td>{{ p['matchdate'] }}</td>
+                  <td>{{ p['gameTime'] }}</td>
+                  
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br><br>
+    
+        {% endif %}
+
+
+
+</div>
+
+{% endblock %}
+
+

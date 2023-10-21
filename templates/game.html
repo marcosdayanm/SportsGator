@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Catch The Ball!
+{% endblock %}
+
+{% block main %}
+
+
+<h1 class="text-white">Catch The Ball!</h1><br>
+
+<!-- Implementación del juego desde el servidor de p5.js-->
+<!-- <div class="iframe-page">
+
+    <div class="iframe-container">
+        <iframe src="https://editor.p5js.org/marcosdayanm/full/1dAbskRel"></iframe>
+    </div>
+
+</div> -->
+
+
+<!-- Implementación local del juego -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
+<script src="{{ url_for('static', filename='game/sketch.js') }}" defer></script>
+
+<audio controls loop autoplay muted id="gameAudio">
+    <source src="../static/nfl_fox_theme_song_ctd.mp3" type="audio/mp3">
+</audio>
+
+
+{% endblock %}
+
+

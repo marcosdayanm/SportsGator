@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rosters
+{% endblock %}
+
+{% block main %}
+
+
+<img src="{{ logo }}" alt="Photo" class="mid-image">
+<br>
+<h1 class="text-white">{{ name }} Roster</h1>
+
+
+<br><br><br>
+
+<div  class="asection">
+
+  <table class="table-grey text-white">
+
+      <thead>
+          <tr>
+              <th></th>
+              <th>#</th>
+              <th>NAME</th>
+              <th>POS</th>
+              <th>AGE</th>
+              <th>HT</th>
+              <th>WT</th>
+              <th>EXP</th>
+              <th>COLLEGE</th>          
+          </tr>
+      </thead>
+
+      <tbody>
+          {% for p in pinfo %}
+          <tr>
+
+            <td><img src="{{ p['espnHeadshot'] }}" alt="Photo" class="small2-image"></td>
+            <td>{{ p['jerseyNum'] }}</td>
+            <td>{{ p['longName'] }}</td>
+            <td>{{ p['pos'] }}</td>
+            <td>{{ p['age'] }}</td>
+            <td>{{ p['height'] }}</td>
+            <td>{{ p['weight'] }}</td>
+            <td>{{ p['exp'] }}</td>
+            <td>{{ p['school'] }}</td>
+            
+          </tr>
+          {% endfor %}
+      </tbody>
+
+  </table>
+
+</div>
+
+{% endblock %}
+
+

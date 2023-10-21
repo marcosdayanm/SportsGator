@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Teams
+{% endblock %}
+
+{% block main %}
+
+<img src="{{ logonfl }}" alt="Photo" class="mid-image">
+<br>
+<h1 class="text-white">NFL Teams Sorted by Score</h1>
+<br><br>
+
+<div  class="asection">
+
+  <table class="table-grey text-white">
+
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>Team Name</th>
+              <th></th>
+              <th></th>
+              <th>Team Abv</th>
+              <th>Score (W/L)</th>
+              <th>Streak</th>          
+          </tr>
+      </thead>
+
+      <tbody>
+          {% for t in teams_info %}
+          <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>
+                <img src="{{ t['image'] }}" alt="Team Logo" class="small-image">
+                <span>{{ t["teamCity"] }} {{ t["teamName"] }}</span>
+            </td>
+
+            <td>
+              <!-- Form for Roster -->
+              <form action="/roster" method="post" target="_blank" class="team-form">
+                <input type="hidden" name="abv" value="{{ t['teamAbv'] }}">
+                <input type="hidden" name="name" value="{{ t['teamCity'] }} {{ t['teamName'] }}">
+                <input type="hidden" name="logo" value="{{ t['image'] }}">
+                <button type="submit" class="btn btn-dark">View Roster</button>
+              </form>
+            </td>
+
+            <td>
+              <!-- Form for Schedule -->
+              <form action="/schedule" method="post" target="_blank" class="team-form">
+                <input type="hidden" name="abv" value="{{ t['teamAbv'] }}">
+                <input type="hidden" name="name" value="{{ t['teamCity'] }} {{ t['teamName'] }}">
+                <input type="hidden" name="logo" value="{{ t['image'] }}">
+                <button type="submit" class="btn btn-dark">View Schedule</button>
+              </form>
+            </td>
+              
+              <td>{{ t['teamAbv'] }}</td>
+              <td>{{ t['wins'] }}-{{t['losses']}}-{{t['tie']}}</td> 
+              <td>{{ t['currentStreakResult'] }}{{ t['currentStreakLength'] }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+
+  </table>
+
+</div>
+
+{% endblock %}
+
+
